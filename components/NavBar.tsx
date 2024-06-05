@@ -1,6 +1,7 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 import { Button } from "./ui/button";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 function NavBar() {
   const NavLinks = [
@@ -19,13 +20,18 @@ function NavBar() {
       <h1>NextJS Feed Demo</h1>
       <div className="flex gap-x-4">
         {NavLinks.map((link) => (
-          <Link
-            key={link.name}
-            href={link.href}
-          >
+          <Link key={link.name} href={link.href}>
             <Button>{link.name}</Button>
           </Link>
         ))}
+        <SignedOut>
+          <div className="bg-slate-800 text-white rounded-md items-center px-4 py-2">
+            <SignInButton mode="modal" forceRedirectUrl={"/"} />
+          </div>
+        </SignedOut>
+        <SignedIn>
+          <UserButton afterSignOutUrl="/"/>
+        </SignedIn>
       </div>
     </nav>
   );

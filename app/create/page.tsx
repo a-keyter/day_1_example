@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import HumanTextForm from "@/components/forms/HumanTextForm";
 
 function page() {
   return (
@@ -16,7 +17,7 @@ function page() {
             <TabsTrigger value="ai_image">AI Images</TabsTrigger>
           </TabsList>
           <TabsContent value="human_text">
-            Create a Human Text Post Here.
+            <HumanTextForm/>
           </TabsContent>
           <TabsContent value="human_image">
             Create an Image Post Here.
